@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\CareerPortal\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|c:\\users\\hp\\desktop\\careerportal\\careerportal.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|solutionrelative:careerportal.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|c:\\users\\hp\\desktop\\careerportal\\careerportal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|solutionrelative:careerportal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|c:\\users\\hp\\desktop\\careerportal\\careerportal.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0F926444-E16B-4D67-85A4-FED03B36A33C}|CareerPortal.Api\\CareerPortal.Api.csproj|solutionrelative:careerportal.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuestionController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\Controllers\\QuestionController.cs",
+              "RelativeDocumentMoniker": "CareerPortal.Api\\Controllers\\QuestionController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\Controllers\\QuestionController.cs",
+              "RelativeToolTip": "CareerPortal.Api\\Controllers\\QuestionController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAApwEQAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T15:06:32.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "CareerPortal.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\appsettings.json",
+              "RelativeToolTip": "CareerPortal.Api\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-15T15:05:44.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "CareerPortal.Api\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\CareerPortal\\CareerPortal.Api\\appsettings.Development.json",
+              "RelativeToolTip": "CareerPortal.Api\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-15T15:05:40.486Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "O1ORC2LX7kmvkJhp3FohgJXxI+0GGR94cWuX89ld9Po=",
+  "Source": "CareerPortal.Api",
+  "BasePath": "_content/CareerPortal.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
