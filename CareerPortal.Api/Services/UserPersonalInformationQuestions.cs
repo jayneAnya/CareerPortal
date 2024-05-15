@@ -4,6 +4,7 @@ using CareerPortal.Api.Interfaces;
 using CareerPortal.Data;
 using CareerPortal.DTOs;
 using CareerPortal.Models;
+using System.Transactions;
 
 namespace CareerPortal.Api.Services
 {
@@ -15,25 +16,50 @@ namespace CareerPortal.Api.Services
             _repository = repository;
         }
 
-        public async Task<bool> CreatePersonalInformationAsync(CreateApplicationDTO createApplicationDTO)
+        public async Task<bool> CreateQuestionAsync(CreateApplicationDTO createApplicationDTO)
         {
             try
             {
-                var createApplicationModel = new CandidateInformation
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    Address = createApplicationDTO.Address,
-                    DateOfBirth = createApplicationDTO.DateOfBirth,
-                    Email = createApplicationDTO.Email,
-                    FirstName = createApplicationDTO.FirstName,
-                    Gender = createApplicationDTO.Gender,
-                    LastName = createApplicationDTO.LastName,
-                    Nationality = createApplicationDTO.Nationality,
-                    PhoneNumber = createApplicationDTO.PhoneNumber,
-                };
-                var res = await _repository.CreateApplicationAsync(createApplicationModel);
-                if (res)
-                    return true;
-                return false;
+                    // Create PersonalInformation object
+                    var personalInfo = new CandidateInformation
+                    {
+                        Email = createApplicationDTO.Email,
+                        FirstName = createApplicationDTO.FirstName,
+                        LastName = createApplicationDTO.LastName,
+                        PhoneNumber = createApplicationDTO.PhoneNumber,
+                        Nationality = createApplicationDTO.Nationality,
+                        Address = createApplicationDTO.Address,
+                        DateOfBirth = createApplicationDTO.DateOfBirth,
+                        Gender = createApplicationDTO.Gender
+                    };
+                    var personalInfoSaved = await _repository.CreateApplicationAsync(personalInfo);
+
+                    if (personalInfoSaved)
+                    {
+                        var questions = new List<Question>();
+
+                        foreach (var question in createApplicationDTO.Questions)
+                        {
+                            var quest = new Question
+                            {
+                                QuestionText = question.QuestionText,
+                                CreatedDate = DateTime.Now,
+                                type = question.QuestionType,
+                            };
+
+                            questions.Add(quest);
+                        }
+                        var questionsSaved = await _repository.CreateQuestionAsync(questions);
+                        if (questionsSaved)
+                        {
+                            scope.Complete();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -42,20 +68,15 @@ namespace CareerPortal.Api.Services
             }
         }
 
-        public async Task<bool> EditPersonalInformationAsync(CreateApplicationDTO createApplicationDTO)
+        public async Task<bool> EditQuestionAsync(QuestionDTO createQuestionDTO)
         {
-            var createApplicationModel = new CandidateInformation
+            var createQuestionModel = new Question
             {
-                Address = createApplicationDTO.Address,
-                DateOfBirth = createApplicationDTO.DateOfBirth,
-                Email = createApplicationDTO.Email,
-                FirstName = createApplicationDTO.FirstName,
-                Gender = createApplicationDTO.Gender,
-                LastName = createApplicationDTO.LastName,
-                Nationality = createApplicationDTO.Nationality,
-                PhoneNumber = createApplicationDTO.PhoneNumber,
+                type = createQuestionDTO.QuestionType,
+                QuestionText = createQuestionDTO.QuestionText,
+                UpdatedDate = DateTime.Now,
             };
-            var res = await _repository.EditApplicationAsync(createApplicationModel);
+            var res = await _repository.EditQuestionAsync(createQuestionModel);
             if (res) return true;
             return false;
         }
@@ -66,19 +87,6 @@ namespace CareerPortal.Api.Services
             return res;
         }
 
-        public async Task<bool> CreateQuestionAsync(QuestionDTO createApplicationDTO)
-        {
-            var createQuestion = new Question
-            {
-                QuestionText = createApplicationDTO.QuestionText,
-                type = createApplicationDTO.QuestionType,
-            };
-
-            var res = await _repository.CreateQuestionAsync(createQuestion);
-            if (res) return true;
-            return false;
-        }
-
-
+        
     }
 }

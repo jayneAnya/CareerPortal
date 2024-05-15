@@ -7,10 +7,9 @@ namespace CareerPortal.Api.Interfaces
 {
     public interface IUserPersonalInformationQuestions
     {
-        Task<bool> CreatePersonalInformationAsync(CreateApplicationDTO createApplicationDTO);
-        Task<bool> EditPersonalInformationAsync(CreateApplicationDTO createApplicationDTO);
+        Task<bool> CreateQuestionAsync(CreateApplicationDTO createApplicationDTO);
+        Task<bool> EditQuestionAsync(QuestionDTO createQuestionDTO);
         Task<Question> GetQuestionAsync(QuestionTypes questionType);
-        Task<bool> CreateQuestionAsync(QuestionDTO createApplicationDTO);
 
     }
 }

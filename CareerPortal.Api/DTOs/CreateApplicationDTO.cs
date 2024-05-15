@@ -13,5 +13,7 @@ namespace CareerPortal.DTOs
         public string? Address { get; set; }
         public string? DateOfBirth { get; set; }
         public string? Gender { get; set; }
+        public List<QuestionDTO> Questions { get; set; }
+
     }
 }
