@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CareerPortal.Api.props" />
+</Project>
