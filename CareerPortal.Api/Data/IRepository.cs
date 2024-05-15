@@ -7,10 +7,10 @@ namespace CareerPortal.Data
     public interface IRepository
     {
         Task<bool> CreateApplicationAsync(CandidateInformation createApplicationDTO);
-        Task<bool> EditApplicationAsync(CandidateInformation createApplicationDTO);
+        Task<bool> EditQuestionAsync(Question question);
         Task<bool> SaveCandidateResponseAsync(List<Answer> createApplicationDTO);
         Task<Question> GetQuestionAsync(string questionType);
-        Task<bool> CreateQuestionAsync(Question createApplicationDTO);
+        Task<bool> CreateQuestionAsync(List<Question> questions);
 
     }
 }

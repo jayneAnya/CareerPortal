@@ -37,17 +37,17 @@ namespace Candidate_Application.Data
             return false;
         }
 
-        public async Task<bool> EditApplicationAsync(CandidateInformation personalInformation)
+        public async Task<bool> EditQuestionAsync(Question question)
         {
-            var existingCustomer = await _container.ReadItemAsync<CandidateInformation>(personalInformation.Id.ToString(), new PartitionKey(personalInformation.Id));
-            
-            if (existingCustomer == null)
+            var existingQuestion = await _container.ReadItemAsync<Question>(question.Id.ToString(), new PartitionKey(question.Id));
+
+            if (existingQuestion == null)
             {
                 return false;
             }
 
-            var response = await _container.ReplaceItemAsync(personalInformation, personalInformation.Id.ToString(), new PartitionKey(personalInformation.Id.ToString()));
-            if (response != null)
+            var result = await _container.ReplaceItemAsync(question, question.Id.ToString(), new PartitionKey(question.Id.ToString()));
+            if (result != null)
                 return true;
             return false;
         }
@@ -80,12 +80,32 @@ namespace Candidate_Application.Data
             }
         }
 
-        public async Task<bool> CreateQuestionAsync(Question createApplicationDTO)
+        public async Task<bool> CreateQuestionAsync(List<Question> questions)
         {
-            var response = await _container.CreateItemAsync(createApplicationDTO, new PartitionKey(createApplicationDTO.Id));
-            if (response.Resource != null)
+            var batch = _container.CreateTransactionalBatch(new PartitionKey(questions.First().Id));
+
+            foreach (var question in questions)
+            {
+                batch.CreateItem(question);
+            }
+            var response = await batch.ExecuteAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                foreach (var operationResult in response)
+                {
+                    if (!operationResult.IsSuccessStatusCode)
+                    {
+                        return false;
+                    }
+                }
+
                 return true;
-            return false;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
